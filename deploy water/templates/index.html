@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>TITLE</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+.back{
+ background-image: url("{{ url_for('static', filename='image/img.jpg') }}");
+ background-repeat:no-repeat;
+ background-size:cover;
+}
+.white{
+color:white;
+}
+.space{
+margin:15px 15px 30px 30px;
+padding:9px 10px;
+background: palegreen;
+width:500px
+}
+.gap{
+padding:10px 20px;
+}
+</style>
+  
+</head>
+
+<body class="back">
+ <div>
+	<div class="jumbotron">
+	<h1 style="text-align:center">WATER QUALITY </h1>
+	
+	</div>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form class="form-group" action="{{ url_for('predict')}}"method="post">
+    
+	<div class="container">
+		<div class="row">
+		<div class="gap col-md-6 ">
+
+		<label class="white" for=""> aluminium </label>
+		<input type="number" class="space form-control" step="0.0001" name=" aluminium " placeholder=" aluminium "  required="required" /><br>
+
+		<label class="white" for=""> ammonia      </label>
+		<input type="number" class="space form-control" step="0.0001" name=" ammonia" placeholder=" ammonia"  required="required" /><br>
+
+		<label class="white" for=""> arsenic</label>
+		<input type="number" class="space form-control" step="0.0001" name=" arsenic" placeholder=" arsenic"  required="required" /><br>
+
+
+		<label class="white" for=""> barium</label>
+		<input type="number" class="space form-control" step="0.0001" name=" barium" placeholder=" barium"  required="required" /><br>
+
+		<label class="white" for=""> cadmium </label>
+		<input type="number" class="space form-control" step="0.0001" name=" cadmium " placeholder=" cadmium"  required="required" /><br>
+
+		<label class="white" for=""> chloramine</label>
+		<input type="number" class="space form-control" step="0.0001" name=" chloramine" placeholder=" chloramine"  required="required" /><br>
+
+		<label class="white" for=""> chromium</label>
+		<input type="number" class="space form-control" step="0.0001" name=" chromium" placeholder=" chromium"  required="required" /><br>
+
+		<label class="white" for=""> copper</label>
+		<input type="number" class="space form-control" step="0.0001" name=" copper" placeholder=" copper"  required="required" /><br>
+
+		<label class="white" for=""> flouride</label>
+		<input type="number" class="space form-control" step="0.0001" name=" flouride" placeholder=" flouride"  required="required" /><br>
+
+
+		<label class="white" for=""> bacteria </label>
+		<input type="number" class="space form-control" step="0.0001" name=" bacteria" placeholder=" bacteria "  required="required" /><br>
+
+
+
+		
+		
+	</div>
+
+	<div class="gap col-md-6">
+
+		<label class="white" for=""> viruses</label>
+		<input type="number" class="space form-control" step="0.0001" name=" viruses " placeholder=" viruses "  required="required" /><br>
+
+
+
+		<label class="white" for=""> lead </label>
+		<input type="number" class="space form-control" step="0.0001" name=" lead " placeholder=" lead "  required="required" /><br>
+
+		<label class="white" for=""> nitrates     </label>
+		<input type="number" class="space form-control" step="0.0001" name=" nitrates     " placeholder=" nitrates     "  required="required" /><br>
+
+		<label class="white" for=""> nitrites     </label>
+		<input type="number" class="space form-control" step="0.0001" name=" nitrites     " placeholder=" nitrites     "  required="required" /><br>
+
+		<label class="white" for=""> mercury</label>
+		<input type="number" class="space form-control" step="0.00001" name=" mercury" placeholder=" mercury"  required="required" /><br>
+
+
+
+		<label class="white" for=""> perchlorate</label>
+		<input type="number" class="space form-control" step="0.0001" name=" perchlorate" placeholder=" perchlorate"  required="required" /><br>
+
+		<label class="white" for=""> radium</label>
+		<input type="number" class="space form-control" step="0.0001" name=" radium" placeholder=" radium"  required="required" /><br>
+
+
+
+
+		<label class="white" for=""> selenium</label>
+		<input type="number" class="space form-control" step="0.0001" name=" selenium" placeholder=" selenium" " required="required" /><br>
+
+		<label class="white" for=""> silver</label>
+		<input type="number" class="space form-control" step="0.0001" name=" silver" placeholder=" silver" required="required" /><br>
+
+		<label class="white" for=""> uranium</label>
+		<input type="number" class="space form-control" step="0.0001" name=" uranium " placeholder=" uranium " required="required" /><br>
+
+	
+		
+
+		
+	</div>
+	
+
+
+
+
+		
+</div>
+</div>
+
+<div style="padding:2% 35%">
+  <button type="submit" class="btn btn-success btn-block" style="width:350px;padding:20px">Predict</button>		
+</div>
+      
+    </form>
+
+   <br>
+   <br>
+<div  style="background:skyblue;padding:2% 40%">
+   {{ prediction_text }}
+</div>
+ </div>
+
+
+</body>
+</html>
